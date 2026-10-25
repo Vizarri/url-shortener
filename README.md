@@ -47,32 +47,17 @@ docker compose down
 
 PostgreSQL data remains in the named Docker volume between restarts.
 
-## Configuration
+## Local configuration
 
-The defaults below are for local development. Both Compose and the application
-read the corresponding exported environment variables.
+Settings are defined directly in `src/main/resources/application.yaml` and
+`compose.yaml`.
 
-| Variable | Default | Purpose |
-| --- | --- | --- |
-| `POSTGRES_DB` | `url_shortener` | Database name |
-| `POSTGRES_USER` | `url_shortener` | Database user |
-| `POSTGRES_PASSWORD` | `url_shortener` | Local database password |
-| `POSTGRES_PORT` | `5432` | PostgreSQL port published on localhost |
-| `DB_URL` | `jdbc:postgresql://localhost:5432/url_shortener` | Optional full JDBC URL override |
-| `PORT` | `8080` | Application HTTP port |
-
-For example, if port 5432 is already in use, run these commands in the same shell:
-
-```sh
-export POSTGRES_PORT=5433
-docker compose up -d --wait postgres
-./mvnw spring-boot:run
-```
-
-Compose also reads a local `.env` file automatically, but Spring Boot does not.
-Export custom settings in the shell so both processes receive the same values.
-Changing the database name, user, or password does not reconfigure an already
-initialized PostgreSQL volume.
+| Setting | Value |
+| --- | --- |
+| Application address | `http://localhost:8080` |
+| Database URL | `jdbc:postgresql://localhost:5432/url_shortener` |
+| Database user | `url_shortener` |
+| Database password | `url_shortener` |
 
 ## Build and test
 
