@@ -49,8 +49,8 @@ PostgreSQL data remains in the named Docker volume between restarts.
 
 ## Local configuration
 
-Settings are defined directly in `src/main/resources/application.yaml` and
-`compose.yaml`.
+Database settings are defined directly in `src/main/resources/application.yaml`
+and `compose.yaml`. The application uses Spring Boot's default HTTP port, 8080.
 
 | Setting | Value |
 | --- | --- |
