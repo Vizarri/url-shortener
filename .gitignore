@@ -1,0 +1,13 @@
+/target/
+/work/
+/outputs/
+/.idea/
+*.iml
+/.classpath
+/.project
+/.settings/
+/.env
+/.env.*
+!/.env.example
+.DS_Store
+*.log
