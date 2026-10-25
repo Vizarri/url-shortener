@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  tomcat:
+    max-http-response-header-size: 32KB
+
 spring:
   application:
     name: url-shortener
@@ -9,3 +14,9 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: validate
+  web:
+    resources:
+      cache:
+        use-last-modified: false
+        cachecontrol:
+          no-store: true

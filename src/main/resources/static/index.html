@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>rebuy links</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+    <h1>rebuy links</h1>
+
+    <form id="shorten-form" action="api/links" method="post">
+        <label for="url">Destination URL</label>
+        <div class="form-row">
+            <input id="url" name="url" type="url" required
+                   placeholder="https://example.com/page"
+                   autocomplete="url" autocapitalize="none" spellcheck="false"
+                   aria-describedby="url-hint form-error">
+            <button id="submit-button" type="submit">Shorten link</button>
+        </div>
+        <p id="url-hint" class="hint">Use http:// or https://.</p>
+        <p id="form-error" class="error" role="alert" hidden></p>
+    </form>
+
+    <section id="result" class="result" aria-label="Short link" hidden>
+        <label for="short-url">Short link</label>
+        <div class="form-row">
+            <input id="short-url" type="text" readonly>
+            <button id="copy-button" class="secondary-button" type="button">Copy link</button>
+        </div>
+        <a id="open-link" target="_blank" rel="noopener noreferrer">Open short link</a>
+        <p id="copy-status" class="hint" role="status"></p>
+    </section>
+    <p id="form-status" class="visually-hidden" role="status"></p>
+    <noscript><p class="error">Enable JavaScript to use this form.</p></noscript>
+</main>
+</body>
+</html>

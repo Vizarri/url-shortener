@@ -1,0 +1,25 @@
+name: rebuy-url-shortener
+
+services:
+  postgres:
+    extends:
+      file: compose.yaml
+      service: postgres
+
+  app-1: &app
+    build: .
+    image: rebuy-url-shortener:local
+    command: ["--spring.datasource.url=jdbc:postgresql://postgres:5432/url_shortener"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8081:8080"
+
+  app-2:
+    <<: *app
+    ports:
+      - "127.0.0.1:8082:8080"
+
+volumes:
+  postgres_data:
